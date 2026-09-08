@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amine</title>
+    <meta name="description" content="Portofolio Amine, seorang Creative Developer dan Desainer UI/UX berbasis di Indonesia yang mengkhususkan diri dalam pengalaman web interaktif.">
+    <meta name="keywords" content="Creative Developer, UI/UX Designer, Frontend Developer, React, Tailwind CSS, Indonesia, Portfolio">
+    <meta name="author" content="Amine">
+    <meta name="theme-color" content="#2563eb">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                fontFamily: {
+                    sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    display: ['"Space Grotesk"', 'sans-serif'],
+                },
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#4f46e5',
+                        dark: '#050505',
+                        surface: '#0a0a0a',
+                        whatsapp: '#25D366',
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
+                        'marquee': 'marquee 30s linear infinite',
+                        'spin-slow': 'spin 15s linear infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'text-reveal': 'textReveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)', filter: 'blur(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)', filter: 'blur(0)' },
+                        },
+                        textReveal: {
+                            '0%': { transform: 'translateY(100%)' },
+                            '100%': { transform: 'translateY(0)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- External Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-dark dark:text-slate-200 transition-colors duration-500 selection:bg-primary selection:text-white overflow-x-hidden">
+
+    <!-- [NEW] Noise Texture Overlay -->
+    <div class="fixed inset-0 z-[1] bg-noise pointer-events-none opacity-40 mix-blend-overlay"></div>
+
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[9999] bg-slate-50 dark:bg-dark flex items-center justify-center">
+        <div class="flex flex-col items-center gap-4">
+            <div class="relative w-16 h-16">
+                <div class="absolute inset-0 border-4 border-slate-200 dark:border-white/10 rounded-full"></div>
+                <div class="absolute inset-0 border-4 border-primary rounded-full border-t-transparent animate-spin"></div>
+            </div>
+            <span class="text-sm font-bold tracking-widest uppercase animate-pulse">Memuat...</span>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-0 bg-grid-pattern pointer-events-none"></div>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/20 rounded-full blur-[120px] pointer-events-none opacity-50 dark:opacity-20 z-0"></div>
+
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-6">
+        <nav class="bg-white/70 dark:bg-surface/70 backdrop-blur-xl border border-slate-200 dark:border-white/10 rounded-full px-6 py-3 flex items-center gap-8 shadow-sm transition-all duration-300 w-full max-w-4xl justify-between md:justify-start reveal-on-scroll">
+            
+            <a href="#" class="text-xl font-bold font-display tracking-tight text-slate-900 dark:text-white hoverable magnetic-btn focus:outline-none relative z-20">
+                YOUNESS_BOUSSEDARI<span class="text-primary">.</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium ml-auto relative z-20" id="desktop-menu">
+                <a href="#home" class="nav-link text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors hoverable magnetic-btn">Home</a>
+                <a href="#about" class="nav-link text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors hoverable magnetic-btn">About</a>
+                <a href="#work" class="nav-link text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors hoverable magnetic-btn">Project</a>
+                <a href="#writing" class="nav-link text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors hoverable magnetic-btn">Writing</a>
+                <a href="#contact" class="px-5 py-2 bg-slate-900 dark:bg-white text-white dark:text-black rounded-full font-bold text-xs hover:scale-105 transition-transform hoverable magnetic-btn">Hire Me</a>
+            </div>
+
+            <div class="flex items-center gap-3 md:ml-4 border-l border-slate-200 dark:border-white/10 pl-4 md:pl-6 relative z-20">
+                <button id="theme-toggle" aria-label="Ganti Mode Gelap" class="w-8 h-8 rounded-full flex items-center justify-center text-slate-500 hover:bg-slate-100 dark:hover:bg-white/10 transition-colors hoverable magnetic-btn focus:outline-none">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="mobile-menu-btn" aria-label="Buka Menu" class="md:hidden text-slate-900 dark:text-white p-1 hoverable magnetic-btn focus:outline-none">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-white/95 dark:bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 opacity-0 pointer-events-none transition-all duration-300">
+        <a href="#home" class="text-3xl font-display font-bold mobile-link hover:text-primary hoverable">Home</a>
+        <a href="#about" class="text-3xl font-display font-bold mobile-link hover:text-primary hoverable">About</a>
+        <a href="#work" class="text-3xl font-display font-bold mobile-link hover:text-primary hoverable">Project</a>
+        <a href="#writing" class="text-3xl font-display font-bold mobile-link hover:text-primary hoverable">Writing</a>
+        <a href="#contact" class="text-3xl font-display font-bold mobile-link hover:text-primary hoverable">Contact</a>
+        <button id="close-menu" aria-label="Tutup Menu" class="absolute top-8 right-8 text-slate-500 hover:text-black dark:hover:text-white hoverable">
+            <i class="fas fa-times text-2xl"></i>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="section-spy relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10 max-w-6xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left order-2 lg:order-1">
+                    <div class="hero-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-sm mb-6">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        </span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">Available for 2025</span>
+                    </div>
+
+                    <!-- Masked Text Reveal Animation -->
+<h1 class="font-display text-5xl md:text-7xl lg:text-[6rem] font-bold leading-[1.1] md:leading-[0.9] tracking-tight mb-6 text-slate-900 dark:text-white">
+    <!-- Baris 1: Muncul biasa dengan masking -->
+    <div class="hero-heading-line overflow-hidden">
+        <span class="block">Cyber</span>
+    </div>
+    
+    <!-- Baris 2: Efek Gradasi Bergerak + Masking -->
+    <div class="hero-heading-line overflow-hidden pb-2">
+        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-500 to-secondary animate-gradient-x bg-[length:200%_auto]">Security</span>
+    </div>
+    
+    <!-- Baris 3: Muncul biasa dengan masking -->
+    <div class="hero-heading-line overflow-hidden">
+        <span class="block">Engineer.</span>
+    </div>
+</h1>
+
+                    <p class="hero-description text-lg text-slate-600 dark:text-slate-400 max-w-md mx-auto lg:mx-0 mb-10 leading-relaxed">
+                        Cybersecurity student focused on Security Engineering, .
+ <span class="text-slate-900 dark:text-white font-semibold">Cloud Security, Offensive Security and</span> Security Operations.
+                    </p>
+
+                    <div class="hero-buttons flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#work" class="group relative px-8 py-3.5 bg-slate-900 dark:bg-white text-white dark:text-black rounded-full font-bold overflow-hidden hover:scale-[1.02] transition-transform shadow-xl shadow-primary/10 hoverable magnetic-btn focus:outline-none">
+                            <span class="relative z-10">See My Work</span>
+                            <div class="absolute inset-0 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+                        </a>
+                        <a href="#contact" class="flex items-center justify-center w-12 h-12 rounded-full border border-slate-200 dark:border-white/20 hover:border-primary hover:text-primary transition-colors hoverable magnetic-btn focus:outline-none" aria-label="Gulir ke Kontak">
+                            <i class="fas fa-arrow-down animate-bounce"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-image-container relative h-[400px] md:h-[600px] flex items-center justify-center order-1 lg:order-2 perspective-1000">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-full blur-3xl animate-pulse-slow"></div>
+                    <div class="hero-circle-outer absolute w-64 h-64 md:w-96 md:h-96 border border-slate-200 dark:border-white/10 rounded-full animate-spin-slow"></div>
+                    <div class="hero-circle-middle absolute w-48 h-48 md:w-72 md:h-72 border border-dashed border-slate-300 dark:border-white/20 rounded-full animate-spin-slow [animation-direction:reverse]"></div>
+                    
+                    <div class="hero-profile-img hero-image-glow relative w-56 h-56 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white dark:border-white/10 shadow-2xl animate-[float_6s_ease-in-out_infinite] z-10 group cursor-pointer hoverable magnetic-btn">
+                        <img src="images/photo1.jpg" 
+                             alt="youness" 
+                             width="800" height="800"
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="about" class="section-spy py-20 bg-white/50 dark:bg-white/5 border-y border-slate-200 dark:border-white/5 backdrop-blur-sm relative z-10">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <h2 class="font-display text-4xl font-bold text-slate-900 dark:text-white mb-12 reveal-on-scroll">My Arsenal <span class="text-primary">.</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 h-auto md:h-[500px]">
+                
+                <!-- Card 1 -->
+                <div class="bento-card spotlight-card col-span-1 md:col-span-2 bg-slate-100 dark:bg-surface border border-slate-200 dark:border-white/10 rounded-3xl p-8 flex flex-col justify-between overflow-hidden relative group hoverable reveal-on-scroll">
+                    <div class="spotlight-overlay"></div>
+                    <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+                    <div class="z-10">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Main Technologies</h3>
+                        <p class="text-slate-500 text-sm">Tools I use to create Infrastructure Digital</p>
+                    </div>
+                    <div class="absolute bottom-8 left-0 right-0 w-full overflow-hidden">
+                        <div class="flex gap-8 animate-marquee whitespace-nowrap opacity-50 group-hover:opacity-100 transition-opacity">
+                            <span class="text-5xl font-display font-bold text-slate-300 dark:text-slate-700">REACT NEXTJS TAILWIND TYPESCRIPT FIGMA WEBGL GSAP FIREBASE HTML CSS C JAVA</span>
+                            <span class="text-5xl font-display font-bold text-slate-300 dark:text-slate-700">REACT NEXTJS TAILWIND TYPESCRIPT FIGMA WEBGL GSAP FIREBASE HTML CSS C JAVA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bento-card spotlight-card col-span-1 bg-slate-900 text-white rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden hoverable reveal-on-scroll delay-100">
+                    <div class="spotlight-overlay"></div>
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary blur-3xl opacity-30 rounded-full"></div>
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-4 text-2xl animate-spin-slow">
+                            🌍
+                        </div>
+                        <h3 class="text-xl font-bold mb-1">Based in</h3>
+                        <p class="text-slate-400">Maroc</p>
+                    </div>
+                    <div class="relative z-10">
+                        <p class="text-xs text-slate-400 uppercase tracking-wider mb-1">Local Time</p>
+                        <p id="local-time" class="text-3xl font-display font-bold font-mono">00:00</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bento-card spotlight-card col-span-1 bg-white dark:bg-surface border border-slate-200 dark:border-white/10 rounded-3xl p-8 flex flex-col justify-center gap-6 hoverable reveal-on-scroll delay-200">
+                    <div class="spotlight-overlay"></div>
+                    <div class="relative z-10">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs font-bold uppercase tracking-wide">
+                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Open for Projects
+                        </span>
+                    </div>
+                    <div class="flex gap-4 text-2xl text-slate-600 dark:text-slate-400 relative z-10">
+                        <a href="#" class="hover:text-primary transition-colors hover:scale-110 transform"><i class="fab fa-github"></i></a>
+                        <a href="#" class="hover:text-primary transition-colors hover:scale-110 transform"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="hover:text-primary transition-colors hover:scale-110 transform"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="hover:text-primary transition-colors hover:scale-110 transform"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bento-card spotlight-card col-span-1 md:col-span-2 bg-gradient-to-br from-primary to-secondary text-white rounded-3xl p-8 flex flex-col justify-center relative overflow-hidden hoverable reveal-on-scroll delay-300">
+                    <div class="spotlight-overlay"></div>
+                    <i class="fas fa-quote-right absolute top-8 right-8 text-6xl text-white/10"></i>
+                    <h3 class="text-2xl md:text-3xl font-display font-bold leading-tight relative z-10 max-w-lg">
+                        "Security is not a product, but a process — you don't secure a system once, you keep testing it."
+                    </h3>
+                    <p class="mt-4 text-white/80 text-sm font-mono relative z-10">— YOUNESS</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-spy py-24 relative z-10">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+                    Skills<span class="text-primary">.</span>
+                </h2>
+                <p class="text-slate-500 max-w-lg mx-auto">
+                    Hands-on skills across offensive and defensive security, built through labs and coursework.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-2xl bg-white dark:bg-surface border border-slate-200 dark:border-white/10 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 group hoverable reveal-on-scroll spotlight-card">
+                    <div class="spotlight-overlay"></div>
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6 text-2xl group-hover:bg-primary group-hover:text-white transition-colors relative z-10">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-display text-slate-900 dark:text-white mb-3 relative z-10">Offensive Security & Pentest</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed relative z-10">
+                        Nmap recon, OWASP Top 10 (SQLi/XSS), DVWA/Juice Shop exploitation.
+                    </p>
+                </div>
+                <div class="p-8 rounded-2xl bg-white dark:bg-surface border border-slate-200 dark:border-white/10 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 group hoverable reveal-on-scroll delay-100 spotlight-card">
+                    <div class="spotlight-overlay"></div>
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6 text-2xl group-hover:bg-primary group-hover:text-white transition-colors relative z-10">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-display text-slate-900 dark:text-white mb-3 relative z-10">SOC & Blue Team</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed relative z-10">
+                        Wazuh SIEM monitoring, Windows Event Logs/Sysmon, MITRE ATT&CK, Wireshark + Caldera.
+                    </p>
+                </div>
+                <div class="p-8 rounded-2xl bg-white dark:bg-surface border border-slate-200 dark:border-white/10 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 group hoverable reveal-on-scroll delay-200 spotlight-card">
+                    <div class="spotlight-overlay"></div>
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6 text-2xl group-hover:bg-primary group-hover:text-white transition-colors relative z-10">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-display text-slate-900 dark:text-white mb-3 relative z-10">Infrastructure & Cloud Security</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed relative z-10">
+                        Active Directory (AD DS, GPO, DNS/DHCP), Azure (VNet, NSG, RBAC, Entra ID).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section-spy py-24 bg-slate-50 dark:bg-[#080808]">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-16 text-center reveal-on-scroll">
+                Experience<span class="text-primary">.</span>
+            </h2>
+
+            <div class="relative border-l border-slate-200 dark:border-white/10 ml-4 md:ml-10 space-y-12">
+                
+                <!-- Item 1 -->
+                <div class="relative pl-8 md:pl-12 group reveal-on-scroll">
+                    <span class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-primary transition-colors ring-4 ring-transparent group-hover:ring-primary/20"></span>
+                    <div class="flex flex-col sm:flex-row gap-2 sm:items-center mb-2">
+                        <h3 class="text-xl font-bold font-display text-slate-900 dark:text-white group-hover:text-primary transition-colors"> Offensive Security 
+                        </h3>
+                        <span class="text-xs font-bold px-2 py-1 rounded bg-slate-200 dark:bg-white/10 text-slate-600 dark:text-slate-300 w-fit">2025</span>
+                    </div>
+                    <p class="text-primary font-medium mb-2">Attacks</p>
+                    <p class="text-slate-500 text-sm leading-relaxed max-w-2xl">
+                       Ran reconnaissance and enumeration with Nmap, exploited OWASP Top 10 vulnerabilities (SQLi, XSS, SSRF,CSRFX,) in DVWA and Juice Shop.
+                    </p>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="relative pl-8 md:pl-12 group reveal-on-scroll delay-100">
+                    <span class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-primary transition-colors ring-4 ring-transparent group-hover:ring-primary/20"></span>
+                    <div class="flex flex-col sm:flex-row gap-2 sm:items-center mb-2">
+                        <h3 class="text-xl font-bold font-display text-slate-900 dark:text-white group-hover:text-primary transition-colors">Infrastructure & Active Directory</h3>
+                        <span class="text-xs font-bold px-2 py-1 rounded bg-slate-200 dark:bg-white/10 text-slate-600 dark:text-slate-300 w-fit">2021 - 2023</span>
+                    </div>
+                    <p class="text-primary font-medium mb-2">ADDC </p>
+                    <p class="text-slate-500 text-sm leading-relaxed max-w-2xl">
+                        Deployed Active Directory (AD DS, DNS, DHCP) and hardened workstations via Group Policy (GPO), then integrated the environment with Wazuh and Splunk for centralized log collection.
+                    </p>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="relative pl-8 md:pl-12 group reveal-on-scroll delay-200">
+                    <span class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-primary transition-colors ring-4 ring-transparent group-hover:ring-primary/20"></span>
+                    <div class="flex flex-col sm:flex-row gap-2 sm:items-center mb-2">
+                        <h3 class="text-xl font-bold font-display text-slate-900 dark:text-white group-hover:text-primary transition-colors">Cloud Security & Azure — AWS</h3>
+                        <span class="text-xs font-bold px-2 py-1 rounded bg-slate-200 dark:bg-white/10 text-slate-600 dark:text-slate-300 w-fit">2024 - 2026</span>
+                    </div>
+                    <p class="text-primary font-medium mb-2">Cloud</p>
+                    <p class="text-slate-500 text-sm leading-relaxed max-w-2xl">
+                        Built a multi-cloud security lab: Azure VNet, NSG, RBAC, and Entra ID fundamentals alongside AWS IAM users/groups/roles, with positive and negative permission testing across both platforms.
+                    </p>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="relative pl-8 md:pl-12 group reveal-on-scroll">
+                    <span class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-primary transition-colors ring-4 ring-transparent group-hover:ring-primary/20"></span>
+                    <div class="flex flex-col sm:flex-row gap-2 sm:items-center mb-2">
+                        <h3 class="text-xl font-bold font-display text-slate-900 dark:text-white group-hover:text-primary transition-colors"> SOC & Blue Team Experience</h3>
+                        <span class="text-xs font-bold px-2 py-1 rounded bg-slate-200 dark:bg-white/10 text-slate-600 dark:text-slate-300 w-fit">2025</span>
+                    </div>
+                    <p class="text-primary font-medium mb-2">SOC</p>
+                    <p class="text-slate-500 text-sm leading-relaxed max-w-2xl">
+                       Monitored and analyzed security events with Wazuh SIEM, reviewed Windows Event Logs and Sysmon for indicators of compromise, mapped adversary tactics with MITRE ATT&CK, and simulated attacks with Caldera while analyzing traffic in Wireshark
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Selected Work -->
+    <section id="work" class="section-spy py-24 relative z-10">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 reveal-on-scroll">
+                <h2 class="font-display text-4xl md:text-6xl font-bold text-slate-900 dark:text-white">
+                    Projects<br>Selected<span class="text-primary">.</span>
+                </h2>
+                <p class="text-slate-500 text-sm md:text-base max-w-xs text-left md:text-right">
+                   Practical work spanning penetration testing, Active Directory & cloud security, and SOC monitoring.
+                </p>
+            </div>
+
+            <!-- Project Filters -->
+            <div class="flex flex-wrap gap-4 mb-16 reveal-on-scroll delay-100" id="portfolio-filters">
+                <button class="filter-btn active px-5 py-2 rounded-full border border-slate-200 dark:border-white/10 text-sm font-bold text-slate-600 dark:text-slate-300 hover:border-primary hover:text-primary transition-all hoverable magnetic-btn" data-filter="all">All</button>
+                <button class="filter-btn px-5 py-2 rounded-full border border-slate-200 dark:border-white/10 text-sm font-bold text-slate-600 dark:text-slate-300 hover:border-primary hover:text-primary transition-all hoverable magnetic-btn" data-filter="design">Offensive Security</button>
+                <button class="filter-btn px-5 py-2 rounded-full border border-slate-200 dark:border-white/10 text-sm font-bold text-slate-600 dark:text-slate-300 hover:border-primary hover:text-primary transition-all hoverable magnetic-btn" data-filter="dev">SOC & Deffense Security</button>
+                <button class="filter-btn px-5 py-2 rounded-full border border-slate-200 dark:border-white/10 text-sm font-bold text-slate-600 dark:text-slate-300 hover:border-primary hover:text-primary transition-all hoverable magnetic-btn" data-filter="mobile">Project_Cloud</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16 md:gap-y-32" id="projects-grid">
+                
+                <!-- Project 1 -->
+                <article class="project-item spotlight-card group cursor-pointer project-trigger hoverable reveal-on-scroll" 
+                         data-filter-category="dev design"
+                         data-title="E-commerce web" 
+                         data-category="Desain UI/UX • Development"
+                         data-image="images/Cleveroad.jpg" 
+                         data-desc="A premium fashion e-commerce platform. Headless CMS architecture with a Next.js frontend.">
+                    <div class="spotlight-overlay"></div>
+                    <div class="project-card relative w-full aspect-[4/3] bg-slate-200 dark:bg-surface rounded-2xl overflow-hidden mb-6 preserve-3d transition-transform duration-300 shadow-lg group-hover:shadow-xl border border-slate-200 dark:border-white/5">
+                        <div class="absolute inset-0 overflow-hidden transform-gpu">
+                             <img src="images/Cleveroad.jpg" 
+                                  loading="lazy"
+                                  width="1200" height="900"
+                                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 parallax-img" alt="Project 1">
+                             <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start border-b border-slate-200 dark:border-white/10 pb-4 relative z-10">
+                        <div>
+                            <h3 class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-1 group-hover:text-primary transition-colors">E-commerce web</h3>
+                            <p class="text-slate-500 text-sm">Desain UI/UX • Web Development</p>
+                        </div>
+                        <span class="w-8 h-8 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 group-hover:bg-slate-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
+                            <i class="fas fa-plus group-hover:rotate-90 transition-transform"></i>
+                        </span>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-item spotlight-card group cursor-pointer md:mt-24 project-trigger hoverable reveal-on-scroll delay-100"
+                         data-filter-category="dev"
+                         data-title="Game Dashboard" 
+                         data-category="Dashboard • React App"
+                         data-image="images/Game Dashboard Design.jpg"
+                         data-desc="A real-time financial dashboard. Interactive data visualizations built with D3.js.">
+                    <div class="spotlight-overlay"></div>
+                    <div class="project-card relative w-full aspect-[4/3] bg-slate-200 dark:bg-surface rounded-2xl overflow-hidden mb-6 preserve-3d transition-transform duration-300 shadow-lg group-hover:shadow-xl border border-slate-200 dark:border-white/5">
+                        <div class="absolute inset-0 overflow-hidden transform-gpu">
+                             <img src="images/Game Dashboard Design.jpg" 
+                                  loading="lazy"
+                                  width="1200" height="900"
+                                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 parallax-img" alt="Project 2">
+                             <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start border-b border-slate-200 dark:border-white/10 pb-4 relative z-10">
+                        <div>
+                            <h3 class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-1 group-hover:text-primary transition-colors">Game Dashboard</h3>
+                            <p class="text-slate-500 text-sm">Dashboard • React App</p>
+                        </div>
+                        <span class="w-8 h-8 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 group-hover:bg-slate-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
+                            <i class="fas fa-plus group-hover:rotate-90 transition-transform"></i>
+                        </span>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-item spotlight-card group cursor-pointer project-trigger hoverable reveal-on-scroll"
+                         data-filter-category="design"
+                         data-title="Protofolio" 
+                         data-category="Branding • Website"
+                         data-image="images/Capture d'écran 2025-10-22 182207.png"
+                         data-desc="A complete rebranding of an architecture firm. Minimalist grid layout and subtle animations.">
+                    <div class="spotlight-overlay"></div>
+                    <div class="project-card relative w-full aspect-[4/3] bg-slate-200 dark:bg-surface rounded-2xl overflow-hidden mb-6 preserve-3d transition-transform duration-300 shadow-lg group-hover:shadow-xl border border-slate-200 dark:border-white/5">
+                        <div class="absolute inset-0 overflow-hidden transform-gpu">
+                             <img src="images/Capture d'écran 2025-10-22 182207.png" 
+                                  loading="lazy"
+                                  width="1200" height="900"
+                                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 parallax-img" alt="Project 3">
+                             <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start border-b border-slate-200 dark:border-white/10 pb-4 relative z-10">
+                        <div>
+                            <h3 class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-1 group-hover:text-primary transition-colors">Protofilio</h3>
+                            <p class="text-slate-500 text-sm">Branding • Website</p>
+                        </div>
+                        <span class="w-8 h-8 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 group-hover:bg-slate-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
+                            <i class="fas fa-plus group-hover:rotate-90 transition-transform"></i>
+                        </span>
+                    </div>
+                </article>
+
+                <!-- Project 4 -->
+                <article class="project-item spotlight-card group cursor-pointer md:mt-24 project-trigger hoverable reveal-on-scroll delay-100"
+                         data-filter-category="mobile design"
+                         data-title="FitTrack Pro" 
+                         data-category="Desain Mobile • Flutter"
+                         data-image="images/Task manager app.jpg" 
+                         data-desc="Aplikasi kebugaran dengan gamifikasi dan pelacakan GPS. Dikembangkan dengan Flutter.">
+                    <div class="spotlight-overlay"></div>
+                    <div class="project-card relative w-full aspect-[4/3] bg-slate-200 dark:bg-surface rounded-2xl overflow-hidden mb-6 preserve-3d transition-transform duration-300 shadow-lg group-hover:shadow-xl border border-slate-200 dark:border-white/5">
+                        <div class="absolute inset-0 overflow-hidden transform-gpu">
+                             <img src="images/Task manager app.jpg" 
+                                  loading="lazy"
+                                  width="1200" height="900"
+                                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 parallax-img" alt="Project 4">
+                             <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start border-b border-slate-200 dark:border-white/10 pb-4 relative z-10">
+                        <div>
+                            <h3 class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-1 group-hover:text-primary transition-colors">Task Manager</h3>
+                            <p class="text-slate-500 text-sm">Desain Mobile • Flutter</p>
+                        </div>
+                        <span class="w-8 h-8 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 group-hover:bg-slate-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
+                            <i class="fas fa-plus group-hover:rotate-90 transition-transform"></i>
+                        </span>
+                    </div>
+                </article>
+
+            </div>
+            
+            <div class="text-center mt-24">
+                <a href="#" class="inline-block px-8 py-3 rounded-full border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-all text-sm font-semibold tracking-wide hoverable magnetic-btn focus:outline-none">
+                    VIEW ALL ARCHIVES
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="writing" class="section-spy py-24 bg-slate-50 dark:bg-[#080808]">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 reveal-on-scroll">
+                <h2 class="font-display text-4xl font-bold text-slate-900 dark:text-white">
+                    Writing<br>Latest<span class="text-primary">.</span>
+                </h2>
+                <a href="#" class="text-slate-500 text-sm font-bold hover:text-primary transition-colors hoverable magnetic-btn">LIHAT SEMUA ARTIKEL →</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <a href="#" class="group block hoverable reveal-on-scroll">
+                    <div class="h-64 rounded-2xl overflow-hidden mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blog 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    <p class="text-primary text-xs font-bold uppercase tracking-wider mb-2">Development</p>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">Mastering React Server Components in 2025</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed line-clamp-2">Exploring a new paradigm of server-side data fetching to enhance performance and user experience.</p>
+                </a>
+
+                <!-- Article 2 -->
+                <a href="#" class="group block hoverable reveal-on-scroll delay-100">
+                    <div class="h-64 rounded-2xl overflow-hidden mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blog 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    <p class="text-primary text-xs font-bold uppercase tracking-wider mb-2">Desain</p>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">The Psychology of Micro-Interactions</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed line-clamp-2">How small animations and feedback can significantly increase user engagement in modern applications.</p>
+                </a>
+
+                <!-- Article 3 -->
+                <a href="#" class="group block hoverable reveal-on-scroll delay-200">
+                    <div class="h-64 rounded-2xl overflow-hidden mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blog 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    <p class="text-primary text-xs font-bold uppercase tracking-wider mb-2">Career</p>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">From Junior to Senior: A 3-Year Journey</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed line-clamp-2">Lessons learned, mistakes made, and key skills that helped me advance my career in the tech industry.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="testimonials" class="section-spy py-24 relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-16 text-center reveal-on-scroll">
+                Client Stories<span class="text-primary">.</span>
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-slate-50 dark:bg-surface border border-slate-200 dark:border-white/10 p-8 rounded-2xl relative reveal-on-scroll">
+                    <div class="text-primary text-4xl absolute top-6 right-8 opacity-20"><i class="fas fa-quote-right"></i></div>
+                    <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6 italic">
+                        “Alex is a highly detail-oriented developer. He doesn’t just write code—he also thinks about 
+                        the business side and user experience. The final result far exceeded our expectations.”
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-slate-300 rounded-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" loading="lazy" width="200" height="200" class="w-full h-full object-cover" alt="Client 1">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 dark:text-white">James Wilson</h4>
+                            <p class="text-xs text-slate-500 uppercase tracking-wider">CEO, Tech.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-surface border border-slate-200 dark:border-white/10 p-8 rounded-2xl relative reveal-on-scroll delay-100">
+                    <div class="text-primary text-4xl absolute top-6 right-8 opacity-20"><i class="fas fa-quote-right"></i></div>
+                    <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6 italic">
+                        “Working with Alex was a pleasure. His design skills are top-notch, and he has a great 
+                        understanding of user needs. Our app’s user engagement increased significantly after his redesign.”
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-slate-300 rounded-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" loading="lazy" width="200" height="200" class="w-full h-full object-cover" alt="Client 2">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 dark:text-white">Sarah Jenkins</h4>
+                            <p class="text-xs text-slate-500 uppercase tracking-wider">Artistry</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact" class="section-spy py-24 md:py-32 relative overflow-hidden bg-slate-100 dark:bg-[#080808]">
+        <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+        
+        <div class="container mx-auto px-6 relative z-10 max-w-5xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="text-center lg:text-left">
+                    <h2 class="font-display text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6 tracking-tighter leading-tight reveal-on-scroll">
+                        Let's talk security.
+.<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Seriously.</span>
+                    </h2>
+                    <p class="text-slate-500 mb-8 text-lg reveal-on-scroll delay-100">
+                        Open to internships, collaborations, and anything security-related. Don't hesitate to reach out.
+                    </p>
+                    <div class="space-y-4 text-left hidden lg:block reveal-on-scroll delay-200">
+                        <div class="flex items-center gap-4 text-slate-600 dark:text-slate-400">
+                            <i class="fas fa-envelope text-primary w-6"></i>
+                            <span>younessboussedari2025@gmail.com</span>
+                        </div>
+                        <div class="flex items-center gap-4 text-slate-600 dark:text-slate-400">
+                            <i class="fas fa-map-marker-alt text-primary w-6"></i>
+                            <span>Morocco</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="bg-white dark:bg-surface p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-white/10 reveal-on-scroll delay-300">
+                    <form class="space-y-6" id="contact-form">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Name</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all dark:text-white hoverable magnetic-btn" placeholder="Your Name" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all dark:text-white hoverable magnetic-btn" placeholder="email@contoh.com" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all dark:text-white hoverable magnetic-btn" placeholder="Tell me about your project..." required></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-black rounded-xl font-bold text-lg hover:scale-[1.02] transition-transform shadow-lg hoverable magnetic-btn focus:outline-none">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <footer class="mt-24 pt-8 border-t border-slate-200 dark:border-white/10 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500 reveal-on-scroll">
+                <div class="flex gap-6 mb-4 md:mb-0">
+                    <a href="#" class="hover:text-primary transition-colors hoverable focus:outline-none magnetic-btn">LinkedIn</a>
+                    <a href="#" class="hover:text-primary transition-colors hoverable focus:outline-none magnetic-btn">Instagram</a>
+                    <a href="#" class="hover:text-primary transition-colors hoverable focus:outline-none magnetic-btn">GitHub</a>
+                </div>
+                <div>© <span id="year">2025</span> Youness. All rights reserved.</div>
+            </footer>
+        </div>
+    </section>
+
+    <div id="project-modal" class="fixed inset-0 z-[100] hidden">
+
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity opacity-0" id="modal-backdrop"></div>
+        
+        <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+            <div class="bg-white dark:bg-[#111] w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl transform scale-95 opacity-0 transition-all duration-300 pointer-events-auto border border-slate-200 dark:border-white/10" id="modal-content">
+                <div class="relative">
+
+                    <button id="close-modal" aria-label="Tutup Modal" class="absolute top-4 right-4 w-10 h-10 bg-white/50 dark:bg-black/50 backdrop-blur rounded-full flex items-center justify-center text-slate-900 dark:text-white hover:bg-red-500 hover:text-white transition-colors z-10 hoverable focus:outline-none">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    
+                    <div class="h-64 md:h-96 w-full overflow-hidden">
+                        <img id="modal-image" src="" class="w-full h-full object-cover" alt="Detail Proyek">
+                    </div>
+
+                    <div class="p-8 md:p-12">
+                        <div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-6">
+                            <div>
+                                <span id="modal-category" class="text-primary font-bold text-sm tracking-widest uppercase mb-2 block">Category</span>
+                                <h2 id="modal-title" class="text-3xl md:text-5xl font-display font-bold text-slate-900 dark:text-white">Project Title</h2>
+                            </div>
+                            <a href="#" class="px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-black rounded-full font-bold text-sm hover:scale-105 transition-transform whitespace-nowrap hoverable focus:outline-none">
+                                Visit Website <i class="fas fa-external-link-alt ml-2"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                            <div class="md:col-span-2">
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">About the Project</h3>
+                                <p id="modal-desc" class="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
+                                    Description is here.
+                                </p>
+                            </div>
+                            <div class="space-y-6">
+                                <div>
+                                    <h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-2">Technology</h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-slate-100 dark:bg-white/10 rounded-full text-xs font-medium text-slate-600 dark:text-slate-300"></span>
+                                        <span class="px-3 py-1 bg-slate-100 dark:bg-white/10 rounded-full text-xs font-medium text-slate-600 dark:text-slate-300">Tailwind</span>
+                                        <span class="px-3 py-1 bg-slate-100 dark:bg-white/10 rounded-full text-xs font-medium text-slate-600 dark:text-slate-300">GSAP</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-2">Year</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">2026</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="" target="_blank" aria-label="Chat WhatsApp" class="fixed bottom-8 right-8 z-[60] w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300 hoverable magnetic-btn group">
+        <span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-30 animate-ping"></span>
+        <i class="fab fa-whatsapp text-3xl leading-none z-10 group-hover:rotate-12 transition-transform"></i>
+    </a>
+
+    <button id="scrollToTopBtn" aria-label="Gulir ke Atas" class="fixed bottom-28 right-8 z-50 w-12 h-12 bg-white dark:bg-surface border border-slate-200 dark:border-white/20 rounded-full flex items-center justify-center text-slate-600 dark:text-white shadow-lg translate-y-20 opacity-0 transition-all duration-300 hover:border-primary hover:text-primary hover:-translate-y-1 hoverable focus:outline-none">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
