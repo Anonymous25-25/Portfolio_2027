@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" font-family="Consolas, monospace">
+<defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#05070f"/><stop offset="1" stop-color="#101a3a"/></linearGradient>
+<radialGradient id="g" cx="0.5" cy="0.3" r="0.6"><stop offset="0" stop-color="#2563eb" stop-opacity="0.5"/><stop offset="1" stop-color="#2563eb" stop-opacity="0"/></radialGradient></defs>
+<rect width="1200" height="900" fill="url(#b)"/><rect width="1200" height="900" fill="url(#g)"/>
+<rect x="60" y="50" width="250" height="44" rx="22" fill="#2563eb"/><text x="185" y="79" text-anchor="middle" fill="#fff" font-size="22" font-weight="bold">P4 • NESSUS VA</text>
+<text x="60" y="150" fill="#fff" font-size="54" font-weight="bold" font-family="Arial">Vulnerability Scanning</text>
+<text x="60" y="190" fill="#93c5fd" font-size="24">Nessus • CVE / CVSS • Priorisation patch</text>
+<g>
+<rect x="60" y="230" width="540" height="300" rx="18" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+<text x="90" y="270" fill="#fff" font-size="22" font-weight="bold">Scan Results — 192.168.11.0/24</text>
+<rect x="90" y="290" width="480" height="42" rx="8" fill="#450a0a"/><text x="110" y="318" fill="#fecaca" font-size="19">■ CRITICAL  3  Samba CVE-2007-2447  10.0</text>
+<rect x="90" y="340" width="480" height="42" rx="8" fill="#7c2d12"/><text x="110" y="368" fill="#fed7aa" font-size="19">■ HIGH        5  Apache outdated  7.5</text>
+<rect x="90" y="390" width="480" height="42" rx="8" fill="#713f12"/><text x="110" y="418" fill="#fef08a" font-size="19">■ MEDIUM  8  OpenSSH legacy  5.3</text>
+<rect x="90" y="440" width="480" height="42" rx="8" fill="#14532d"/><text x="110" y="468" fill="#bbf7d0" font-size="19">■ LOW       12  Info disclosure  2.1</text>
+<text x="90" y="505" fill="#64748b" font-size="17">16 hosts up • 5 ports/host • credentialed scan</text>
+<rect x="630" y="230" width="510" height="300" rx="18" fill="#111827" stroke="#2563eb" stroke-width="2"/>
+<text x="660" y="270" fill="#fff" font-size="22" font-weight="bold">Top Finding Detail</text>
+<text x="660" y="310" fill="#f87171" font-size="20">CVE-2007-2447 Samba 3.0.20</text>
+<text x="660" y="340" fill="#e2e8f0" font-size="18">CVSS 10.0 • RCE username map</text>
+<text x="660" y="370" fill="#e2e8f0" font-size="18">script → /usr/bin/smbclient</text>
+<rect x="660" y="390" width="450" height="60" rx="10" fill="#1e293b"/><text x="885" y="427" text-anchor="middle" fill="#facc15" font-size="18">FIX: patch samba 4.x + firewall 445</text>
+<text x="660" y="480" fill="#4ade80" font-size="18">✓ Export .nessus + PDF • tickets Jira</text>
+</g>
+<rect x="60" y="560" width="1080" height="260" rx="18" fill="#0a0f1e" stroke="#334155" stroke-width="2"/>
+<text x="90" y="615" fill="#60a5fa" font-size="21">nessus ▸ New Scan → Basic Network Scan → 192.168.11.146</text>
+<text x="90" y="655" fill="#e2e8f0" font-size="20">Plugins 120k • SYN scan • Service detection • CVE correlation</text>
+<text x="90" y="695" fill="#4ade80" font-size="20">✓ Remediation priority: Critical → patch 24h • High → 7d</text>
+<rect x="90" y="725" width="420" height="50" rx="10" fill="#2563eb"/><text x="300" y="757" text-anchor="middle" fill="#fff" font-size="20" font-weight="bold">VA automatisée + Pentest manuel</text>
+</svg>

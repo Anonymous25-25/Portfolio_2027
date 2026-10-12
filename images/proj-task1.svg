@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" font-family="Consolas, monospace">
+<defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#05070f"/><stop offset="1" stop-color="#1a0f1e"/></linearGradient>
+<radialGradient id="g" cx="0.5" cy="0.3" r="0.6"><stop offset="0" stop-color="#ef4444" stop-opacity="0.4"/><stop offset="1" stop-color="#ef4444" stop-opacity="0"/></radialGradient></defs>
+<rect width="1200" height="900" fill="url(#b)"/><rect width="1200" height="900" fill="url(#g)"/>
+<rect x="60" y="50" width="340" height="44" rx="22" fill="#dc2626"/><text x="230" y="79" text-anchor="middle" fill="#fff" font-size="22" font-weight="bold">T1 • KIOPTRIX L1 ASSESSMENT</text>
+<text x="60" y="150" fill="#fff" font-size="50" font-weight="bold" font-family="Arial">Formal Vuln Assessment 38p</text>
+<text x="60" y="190" fill="#fca5a5" font-size="24">4 CVE • 2 exploités • Samba → RCE → root</text>
+<g>
+<rect x="60" y="230" width="255" height="150" rx="14" fill="#450a0a" stroke="#ef4444" stroke-width="2"/><text x="187" y="265" text-anchor="middle" fill="#fecaca" font-size="18" font-weight="bold">vsftpd 2.3.4</text><text x="187" y="295" text-anchor="middle" fill="#fff" font-size="16">CVE-2011-2523</text><text x="187" y="325" text-anchor="middle" fill="#4ade80" font-size="17">LOW • backdoor</text><text x="187" y="352" text-anchor="middle" fill="#94a3b8" font-size="15">conceptuel</text>
+<rect x="330" y="230" width="255" height="150" rx="14" fill="#431407" stroke="#f97316" stroke-width="2"/><text x="457" y="265" text-anchor="middle" fill="#fed7aa" font-size="18" font-weight="bold">OpenSSH 4.7</text><text x="457" y="295" text-anchor="middle" fill="#fff" font-size="16">CVE-2008-5161</text><text x="457" y="325" text-anchor="middle" fill="#facc15" font-size="17">MED • CBC plain</text><text x="457" y="352" text-anchor="middle" fill="#94a3b8" font-size="15">conceptuel</text>
+<rect x="600" y="230" width="255" height="150" rx="14" fill="#422006" stroke="#facc15" stroke-width="2"/><text x="727" y="265" text-anchor="middle" fill="#fef08a" font-size="18" font-weight="bold">Apache 1.3.20</text><text x="727" y="295" text-anchor="middle" fill="#fff" font-size="16">CVE-2001-0729</text><text x="727" y="325" text-anchor="middle" fill="#facc15" font-size="17">MED •_chunked</text><text x="727" y="352" text-anchor="middle" fill="#4ade80" font-size="15">✓ exploité</text>
+<rect x="870" y="230" width="270" height="150" rx="14" fill="#7f1d1d" stroke="#fff" stroke-width="3"/><text x="1005" y="265" text-anchor="middle" fill="#fff" font-size="19" font-weight="bold">★ Samba 3.0.20</text><text x="1005" y="295" text-anchor="middle" fill="#fecaca" font-size="16">CVE-2007-2447</text><text x="1005" y="325" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold">CRITICAL 10.0</text><text x="1005" y="352" text-anchor="middle" fill="#4ade80" font-size="15">✓ RCE → ROOT</text>
+</g>
+<rect x="60" y="410" width="1080" height="410" rx="18" fill="#0a0f1e" stroke="#334155" stroke-width="2"/>
+<text x="90" y="465" fill="#e2e8f0" font-size="20">Recon → Scan → Enum → Research → Exploit • NVD + Exploit-DB</text>
+<text x="90" y="500" fill="#f87171" font-size="20">➜ smb username map script → RCE → id uid=0(root)</text>
+<text x="90" y="535" fill="#e2e8f0" font-size="19">Screenshots CLI + tableaux + PoC • 8 mars 2026 • note 5/5</text>
+<rect x="90" y="560" width="1020" height="66" rx="10" fill="#1e293b"/><text x="110" y="590" fill="#facc15" font-size="19">Remediation: patch vsftpd 3.0.3+ • update samba • disable legacy</text><text x="110" y="615" fill="#94a3b8" font-size="17">kill-chain documentée • hardening proposé • executive summary</text>
+<rect x="90" y="650" width="380" height="52" rx="10" fill="#dc2626"/><text x="280" y="683" text-anchor="middle" fill="#fff" font-size="20" font-weight="bold">CRITICAL → ROOT in 38p report</text>
+</svg>
