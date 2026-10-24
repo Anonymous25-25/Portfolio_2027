@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" font-family="Consolas, monospace">
+<defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#05070f"/><stop offset="1" stop-color="#0b1e17"/></linearGradient>
+<radialGradient id="g" cx="0.5" cy="0.3" r="0.6"><stop offset="0" stop-color="#10b981" stop-opacity="0.4"/><stop offset="1" stop-color="#10b981" stop-opacity="0"/></radialGradient></defs>
+<rect width="1200" height="900" fill="url(#b)"/><rect width="1200" height="900" fill="url(#g)"/>
+<rect x="60" y="50" width="340" height="44" rx="22" fill="#059669"/><text x="230" y="79" text-anchor="middle" fill="#fff" font-size="21" font-weight="bold">T2 • ESCALATE PRIVILEGES:1</text>
+<text x="60" y="150" fill="#fff" font-size="50" font-weight="bold" font-family="Arial">VulnHub → Root in 4 steps</text>
+<text x="60" y="190" fill="#6ee7b7" font-size="24">.124 • robots.txt • phpbash • sudo /bin/bash</text>
+<g>
+<rect x="60" y="230" width="255" height="140" rx="14" fill="#0f172a" stroke="#10b981" stroke-width="2"/><text x="187" y="268" text-anchor="middle" fill="#fff" font-size="19" font-weight="bold">1 NMAP</text><text x="187" y="298" text-anchor="middle" fill="#6ee7b7" font-size="17">robots.txt found</text><text x="187" y="328" text-anchor="middle" fill="#94a3b8" font-size="16">hidden path</text>
+<rect x="330" y="230" width="255" height="140" rx="14" fill="#0f172a" stroke="#10b981" stroke-width="2"/><text x="457" y="268" text-anchor="middle" fill="#fff" font-size="19" font-weight="bold">2 PHPBASH</text><text x="457" y="298" text-anchor="middle" fill="#facc15" font-size="17">www-data shell</text><text x="457" y="328" text-anchor="middle" fill="#94a3b8" font-size="16">web shell ✓</text>
+<rect x="600" y="230" width="255" height="140" rx="14" fill="#0f172a" stroke="#facc15" stroke-width="2"/><text x="727" y="268" text-anchor="middle" fill="#fff" font-size="19" font-weight="bold">3 MD5 CRACK</text><text x="727" y="298" text-anchor="middle" fill="#facc15" font-size="17">amma → armour</text><text x="727" y="328" text-anchor="middle" fill="#94a3b8" font-size="16">TTY stabilized</text>
+<rect x="870" y="230" width="270" height="140" rx="14" fill="#052e16" stroke="#22c55e" stroke-width="3"/><text x="1005" y="268" text-anchor="middle" fill="#fff" font-size="19" font-weight="bold">4 SUDO → ROOT</text><text x="1005" y="298" text-anchor="middle" fill="#4ade80" font-size="17">/bin/bash NOPASSWD</text><text x="1005" y="328" text-anchor="middle" fill="#fff" font-size="17"># whoami root ✓</text>
+</g>
+<rect x="60" y="400" width="1080" height="420" rx="18" fill="#0a0f1e" stroke="#334155" stroke-width="2"/>
+<text x="90" y="455" fill="#22c55e" font-size="20">➜ curl /robots.txt → /phpbash.php → www-data</text>
+<text x="90" y="490" fill="#e2e8f0" font-size="20">➜ enum users/cron/services → /home/amma credentials.txt</text>
+<text x="90" y="525" fill="#facc15" font-size="20">➜ MD5 crack → armour • python3 -c import pty TTY</text>
+<rect x="90" y="550" width="1020" height="70" rx="10" fill="#052e16" stroke="#22c55e"/><text x="110" y="580" fill="#4ade80" font-size="21">➜ sudo /bin/bash → root • id uid=0 • whoami proof ✓</text><text x="110" y="607" fill="#bbf7d0" font-size="18">least privilege sudoers • SHA-512 • remove webshells</text>
+<text x="90" y="660" fill="#6ee7b7" font-size="19">26 pages • hardening 3 mesures • screenshots chaque étape</text>
+<rect x="90" y="690" width="360" height="52" rx="10" fill="#059669"/><text x="270" y="723" text-anchor="middle" fill="#fff" font-size="20" font-weight="bold">Post-exploit → Root</text>
+</svg>

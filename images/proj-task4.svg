@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" font-family="Consolas, monospace">
+<defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#05070f"/><stop offset="1" stop-color="#150f2e"/></linearGradient>
+<radialGradient id="g" cx="0.5" cy="0.3" r="0.6"><stop offset="0" stop-color="#8b5cf6" stop-opacity="0.45"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient></defs>
+<rect width="1200" height="900" fill="url(#b)"/><rect width="1200" height="900" fill="url(#g)"/>
+<rect x="60" y="50" width="360" height="44" rx="22" fill="#6d28d9"/><text x="240" y="79" text-anchor="middle" fill="#fff" font-size="21" font-weight="bold">T4 • ADVANCED CHAINING ALTORO</text>
+<text x="60" y="150" fill="#fff" font-size="48" font-weight="bold" font-family="Arial">Union SQLi → Takeover</text>
+<text x="60" y="190" fill="#c4b5fd" font-size="24">Gobuster • Error-based • 2 Crit + 2 High</text>
+<g font-size="17">
+<rect x="60" y="230" width="190" height="120" rx="12" fill="#0f172a" stroke="#8b5cf6" stroke-width="2"/><text x="155" y="265" text-anchor="middle" fill="#fff" font-weight="bold">INFO DISC</text><text x="155" y="292" text-anchor="middle" fill="#c4b5fd">.bak .old</text><text x="155" y="318" text-anchor="middle" fill="#4ade80">Gobuster ✓</text>
+<rect x="270" y="230" width="190" height="120" rx="12" fill="#450a0a" stroke="#ef4444" stroke-width="2"/><text x="365" y="265" text-anchor="middle" fill="#fff" font-weight="bold">UNION SQLi</text><text x="365" y="292" text-anchor="middle" fill="#fecaca">schema→hash</text><text x="365" y="318" text-anchor="middle" fill="#4ade80">admin ✓</text>
+<rect x="480" y="230" width="190" height="120" rx="12" fill="#431407" stroke="#f97316" stroke-width="2"/><text x="575" y="265" text-anchor="middle" fill="#fff" font-weight="bold">VERT PRIV</text><text x="575" y="292" text-anchor="middle" fill="#fed7aa">admin portal</text><text x="575" y="318" text-anchor="middle" fill="#4ade80">global ✓</text>
+<rect x="690" y="230" width="190" height="120" rx="12" fill="#422006" stroke="#facc15" stroke-width="2"/><text x="785" y="265" text-anchor="middle" fill="#fff" font-weight="bold">XSS + IDOR</text><text x="785" y="292" text-anchor="middle" fill="#fef08a">hijack</text><text x="785" y="318" text-anchor="middle" fill="#4ade80">session ✓</text>
+<rect x="900" y="230" width="240" height="120" rx="12" fill="#15803d" stroke="#22c55e" stroke-width="3"/><text x="1020" y="265" text-anchor="middle" fill="#fff" font-weight="bold">★ TAKEOVER</text><text x="1020" y="292" text-anchor="middle" fill="#dcfce7">total control</text><text x="1020" y="318" text-anchor="middle" fill="#fff">OTG v4 ✓</text>
+<g stroke="#8b5cf6" stroke-width="3"><line x1="250" y1="290" x2="270" y2="290"/><line x1="460" y1="290" x2="480" y2="290"/><line x1="670" y1="290" x2="690" y2="290"/><line x1="880" y1="290" x2="900" y2="290"/></g>
+</g>
+<rect x="60" y="380" width="1080" height="440" rx="18" fill="#0a0f1e" stroke="#334155" stroke-width="2"/>
+<text x="90" y="435" fill="#c4b5fd" font-size="20">' UNION SELECT table_name,column_name FROM info_schema --</text>
+<text x="90" y="470" fill="#e2e8f0" font-size="20">→ tables: users, accounts → columns: hash, ssn → dump admin</text>
+<text x="90" y="505" fill="#facc15" font-size="20">➜ gobuster / FFuf → /admin /backup.sql.bak /debug.old</text>
+<text x="90" y="540" fill="#e2e8f0" font-size="20">➜ login admin hash → vertical privesc → actions globales</text>
+<rect x="90" y="565" width="1020" height="68" rx="10" fill="#1e1b4b" stroke="#8b5cf6"/><text x="110" y="595" fill="#ddd6fe" font-size="20">Attack map: InfoDisclosure → SQLi → BAC → XSS → hijacking</text><text x="110" y="621" fill="#a5b4fc" font-size="18">CVSS v3.1 par finding • PTES • takeover total démontré</text>
+<rect x="90" y="655" width="420" height="52" rx="10" fill="#6d28d9"/><text x="300" y="688" text-anchor="middle" fill="#fff" font-size="20" font-weight="bold">Researcher level chaining</text>
+</svg>

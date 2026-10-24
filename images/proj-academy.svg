@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" font-family="Consolas, monospace">
+<defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07070f"/><stop offset="1" stop-color="#1e1b2e"/></linearGradient>
+<radialGradient id="g" cx="0.5" cy="0.3" r="0.6"><stop offset="0" stop-color="#a855f7" stop-opacity="0.4"/><stop offset="1" stop-color="#a855f7" stop-opacity="0"/></radialGradient></defs>
+<rect width="1200" height="900" fill="url(#b)"/><rect width="1200" height="900" fill="url(#g)"/>
+<rect x="60" y="50" width="320" height="44" rx="22" fill="#7e22ce"/><text x="220" y="79" text-anchor="middle" fill="#fff" font-size="22" font-weight="bold">P7 • ACADEMY FTP → ROOT</text>
+<text x="60" y="150" fill="#fff" font-size="52" font-weight="bold" font-family="Arial">Academy Privesc Chain</text>
+<text x="60" y="190" fill="#d8b4fe" font-size="24">.148 • FTP anon • Hashcat • Cron root</text>
+<g font-size="18">
+<rect x="60" y="230" width="200" height="130" rx="14" fill="#0f172a" stroke="#a855f7" stroke-width="2"/><text x="160" y="270" text-anchor="middle" fill="#fff" font-weight="bold">1 FTP ANON</text><text x="160" y="298" text-anchor="middle" fill="#d8b4fe">:21 vsftpd</text><text x="160" y="324" text-anchor="middle" fill="#4ade80">note.txt ✓</text>
+<rect x="280" y="230" width="200" height="130" rx="14" fill="#0f172a" stroke="#a855f7" stroke-width="2"/><text x="380" y="270" text-anchor="middle" fill="#fff" font-weight="bold">2 MD5 CRACK</text><text x="380" y="298" text-anchor="middle" fill="#facc15">hashcat</text><text x="380" y="324" text-anchor="middle" fill="#4ade80">student ✓</text>
+<rect x="500" y="230" width="200" height="130" rx="14" fill="#0f172a" stroke="#a855f7" stroke-width="2"/><text x="600" y="270" text-anchor="middle" fill="#fff" font-weight="bold">3 SHELL UP</text><text x="600" y="298" text-anchor="middle" fill="#d8b4fe">php-rev</text><text x="600" y="324" text-anchor="middle" fill="#4ade80">www-data ✓</text>
+<rect x="720" y="230" width="200" height="130" rx="14" fill="#0f172a" stroke="#facc15" stroke-width="2"/><text x="820" y="270" text-anchor="middle" fill="#fff" font-weight="bold">4 LINPEAS</text><text x="820" y="298" text-anchor="middle" fill="#facc15">grimmie SSH</text><text x="820" y="324" text-anchor="middle" fill="#4ade80">found ✓</text>
+<rect x="940" y="230" width="200" height="130" rx="14" fill="#15803d" stroke="#22c55e" stroke-width="3"/><text x="1040" y="270" text-anchor="middle" fill="#fff" font-weight="bold">5 CRON→ROOT</text><text x="1040" y="298" text-anchor="middle" fill="#dcfce7">backup.sh</text><text x="1040" y="324" text-anchor="middle" fill="#fff"># ROOT ✓</text>
+<g stroke="#a855f7" stroke-width="3" fill="#a855f7"><polygon points="260,285 278,295 260,305"/><polygon points="480,285 498,295 480,305"/><polygon points="700,285 718,295 700,305"/><polygon points="920,285 938,295 920,305"/></g>
+</g>
+<rect x="60" y="390" width="1080" height="430" rx="18" fill="#0a0f1e" stroke="#334155" stroke-width="2"/>
+<text x="90" y="445" fill="#22c55e" font-size="21">➜ ftp anonymous@.148 → note.txt (MD5 cd735… Rum Ham)</text>
+<text x="90" y="480" fill="#facc15" font-size="20">➜ hashcat -m 0 hash rockyou → student • ffuf → /academy</text>
+<text x="90" y="515" fill="#e2e8f0" font-size="20">➜ login 10201321/student → upload image.php → nc 4545 www-data</text>
+<text x="90" y="550" fill="#e2e8f0" font-size="20">➜ linpeas.sh → SSH grimmie/My_V3ryS3cur3_P4ss</text>
+<rect x="90" y="575" width="1020" height="70" rx="10" fill="#052e16" stroke="#22c55e"/><text x="110" y="605" fill="#4ade80" font-size="20">➜ backup.sh cron root writable → inject shell → id uid=0(root) ✓</text><text x="110" y="632" fill="#bbf7d0" font-size="18">ffuf • phpmyadmin • python TTY stabilize • privesc confirmed</text>
+<text x="90" y="680" fill="#c4b5fd" font-size="19">Kill-chain complète FTP → Web → System → Cron → ROOT</text>
+<rect x="90" y="705" width="300" height="50" rx="10" fill="#7e22ce"/><text x="240" y="737" text-anchor="middle" fill="#fff" font-size="20" font-weight="bold">www-data → root</text>
+</svg>

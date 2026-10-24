@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" font-family="Consolas, monospace">
+<defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07070f"/><stop offset="1" stop-color="#1e0a1a"/></linearGradient>
+<radialGradient id="g" cx="0.5" cy="0.3" r="0.6"><stop offset="0" stop-color="#ec4899" stop-opacity="0.35"/><stop offset="1" stop-color="#ec4899" stop-opacity="0"/></radialGradient></defs>
+<rect width="1200" height="900" fill="url(#b)"/><rect width="1200" height="900" fill="url(#g)"/>
+<rect x="60" y="50" width="320" height="44" rx="22" fill="#db2777"/><text x="220" y="79" text-anchor="middle" fill="#fff" font-size="22" font-weight="bold">T3 • WEB OWASP ALTORO</text>
+<text x="60" y="150" fill="#fff" font-size="50" font-weight="bold" font-family="Arial">SQLi • XSS • IDOR</text>
+<text x="60" y="190" fill="#f9a8d4" font-size="24">demo.testfire.net • CVSS 9.8 Critical</text>
+<g>
+<rect x="60" y="230" width="560" height="280" rx="16" fill="#fff" stroke="#e5e7eb" stroke-width="2"/>
+<rect x="60" y="230" width="560" height="56" rx="16" fill="#1e293b"/><text x="90" y="266" fill="#fff" font-size="19" font-weight="bold">🏦 Altoro Mutual — Login</text>
+<rect x="90" y="300" width="500" height="48" rx="8" fill="#f1f5f9" stroke="#f87171" stroke-width="2"/><text x="110" y="331" fill="#111" font-size="19">' OR '1'='1 --</text>
+<rect x="90" y="358" width="500" height="48" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/><text x="110" y="389" fill="#94a3b8" font-size="19">password: (empty) → BYPASS ✓</text>
+<rect x="90" y="418" width="500" height="52" rx="8" fill="#dc2626"/><text x="340" y="451" text-anchor="middle" fill="#fff" font-size="19" font-weight="bold">Login as admin — Critical 9.8</text>
+<rect x="660" y="230" width="480" height="280" rx="16" fill="#0f172a" stroke="#ec4899" stroke-width="2"/>
+<text x="690" y="270" fill="#fff" font-size="20" font-weight="bold">Findings OWASP</text>
+<rect x="690" y="285" width="420" height="46" rx="8" fill="#450a0a"/><text x="710" y="314" fill="#fecaca" font-size="18">SQLi login bypass • 9.8 ★</text>
+<rect x="690" y="340" width="420" height="46" rx="8" fill="#431407"/><text x="710" y="369" fill="#fed7aa" font-size="18">IDOR listAccounts 800001 • 8.1</text>
+<rect x="690" y="395" width="420" height="46" rx="8" fill="#422006"/><text x="710" y="424" fill="#fef08a" font-size="18">XSS reflected search • 7.4</text>
+<text x="690" y="465" fill="#f9a8d4" font-size="17">&lt;script&gt;alert('XSS')&lt;/script&gt; ✓</text>
+</g>
+<rect x="60" y="540" width="1080" height="280" rx="18" fill="#0a0f1e" stroke="#334155" stroke-width="2"/>
+<text x="90" y="595" fill="#e2e8f0" font-size="20">Burp Suite • Wappalyzer • crawl • enum formulaires/params</text>
+<text x="90" y="630" fill="#f87171" font-size="20">PoC screenshots + table CVSS + remediation code</text>
+<rect x="90" y="660" width="1020" height="60" rx="10" fill="#1e293b"/><text x="110" y="697" fill="#4ade80" font-size="19">FIX: prepared statements • output encoding • ACL serveur</text>
+</svg>
