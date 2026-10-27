@@ -754,20 +754,23 @@ button {
   border-radius: 0 0 4px 0;
 }
 
-.skill-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+.skill-chip {
+  width: 58px;
+  height: 58px;
+  border-radius: 15px;
   display: grid;
   place-items: center;
-  background: rgba(255, 92, 26, 0.12);
-  color: var(--accent-strong);
-  margin-bottom: 1.2rem;
+  background: #f2efe9;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  margin-bottom: 1.25rem;
 }
 
-.skill-icon svg {
-  width: 22px;
-  height: 22px;
+.skill-chip img {
+  height: 33px;
+  width: auto;
+  max-width: 46px;
+  object-fit: contain;
+  display: block;
 }
 
 .skill-card h3 {
@@ -788,13 +791,28 @@ button {
 }
 
 .tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 28px;
   font-size: 0.78rem;
   font-weight: 500;
   color: var(--ink-soft);
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--line);
   border-radius: var(--radius-pill);
-  padding: 0.28rem 0.7rem;
+  padding: 0.28rem 0.75rem;
+}
+
+.tag-logo {
+  background: #f2efe9;
+  border-color: transparent;
+}
+
+.tag-logo img {
+  height: 15px;
+  width: auto;
+  display: block;
 }
 
 /* ============ TIMELINE ============ */
