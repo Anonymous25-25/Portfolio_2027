@@ -755,9 +755,9 @@ button {
 }
 
 .skill-chip {
-  width: 58px;
-  height: 58px;
-  border-radius: 15px;
+  width: 62px;
+  height: 62px;
+  border-radius: 16px;
   display: grid;
   place-items: center;
   background: #f2efe9;
@@ -766,11 +766,12 @@ button {
 }
 
 .skill-chip img {
-  height: 33px;
+  height: 42px;
   width: auto;
-  max-width: 46px;
+  max-width: 56px;
   object-fit: contain;
   display: block;
+  border-radius: 6px;
 }
 
 .skill-card h3 {
