@@ -816,6 +816,19 @@ button {
   display: block;
 }
 
+.tag-glyph {
+  background: #f2efe9;
+  border-color: transparent;
+  color: #16130f;
+  gap: 0.42rem;
+}
+
+.tag-glyph svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+}
+
 /* ============ TIMELINE ============ */
 .timeline {
   position: relative;
@@ -823,18 +836,22 @@ button {
   padding-left: 1.8rem;
   border-left: 1px solid var(--line);
   display: grid;
-  gap: 2.6rem;
+  gap: 1.6rem;
 }
 
 .tl-item {
   position: relative;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem 1.5rem 1.3rem;
 }
 
 .tl-item::before {
   content: "";
   position: absolute;
   left: calc(-1.8rem - 5.5px);
-  top: 6px;
+  top: 2.4rem;
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -845,12 +862,38 @@ button {
 .tl-head {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.9rem;
   flex-wrap: wrap;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.55rem;
+}
+
+.tl-chip {
+  width: 46px;
+  height: 46px;
+  background: #f2efe9;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  flex: none;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+.tl-chip img {
+  height: 30px;
+  width: auto;
+  max-width: 38px;
+  object-fit: contain;
+  display: block;
+}
+
+.tl-chip svg {
+  width: 26px;
+  height: 26px;
+  color: #16130f;
 }
 
 .tl-year {
+  margin-left: auto;
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--accent-strong);
@@ -861,7 +904,7 @@ button {
 }
 
 .tl-item h3 {
-  font-size: 1.35rem;
+  font-size: 1.3rem;
 }
 
 .tl-item p {
@@ -932,7 +975,7 @@ button {
 
 .project-media {
   position: relative;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 16 / 9;
   overflow: clip;
   background: var(--card-2);
 }
@@ -1298,6 +1341,19 @@ button {
   gap: 1.4rem;
   font-size: 0.9rem;
   color: var(--ink-soft);
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-links a svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
 }
 
 .footer-links a:hover {
