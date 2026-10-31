@@ -693,33 +693,6 @@ button {
   color: var(--accent-strong);
 }
 
-.gallery-strip {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-  margin-top: 3.2rem;
-}
-
-.gallery-strip figure {
-  margin: 0;
-  border-radius: var(--radius-lg);
-  overflow: clip;
-  border: 1px solid var(--line);
-  aspect-ratio: 16 / 11;
-  background: var(--card);
-}
-
-.gallery-strip img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 600ms var(--ease), opacity var(--speed) var(--ease);
-}
-
-.gallery-strip figure:hover img {
-  transform: scale(1.04);
-}
-
 /* ============ SKILLS ============ */
 .skills-grid {
   display: grid;
@@ -1670,23 +1643,6 @@ html.no-js .reveal {
     row-gap: 1.6rem;
   }
 
-  .gallery-strip {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .gallery-strip figure:nth-child(3) {
-    grid-column: span 2;
-  }
-}
-
-@media (max-width: 560px) {
-  .gallery-strip {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery-strip figure:nth-child(3) {
-    grid-column: auto;
-  }
 
   .hero-actions .btn {
     flex: 1 1 auto;
