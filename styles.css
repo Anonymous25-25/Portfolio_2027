@@ -1,6 +1,50 @@
 /* hallmark stamp · v1.0 · direction: dark-studio orange, by request (user template) */
 /* critique: single idea per screen — big orange hero, calm black cards, real material only */
 
+/* ============ FLAME BACKGROUND LAYERS ============ */
+/* html carries the base colour so the fixed ember layer (z-index: -1) can show */
+html {
+  background: #0a0a0b;
+}
+
+.flame-bg {
+  position: fixed;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  z-index: -1;
+  background-image: url("images/bg-ember.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+  pointer-events: none;
+  will-change: transform;
+  transition: opacity 220ms var(--ease);
+}
+
+body.aura-active .flame-bg {
+  opacity: 0.14;
+}
+
+#flame-canvas,
+#flame-hd {
+  position: fixed;
+  inset: 0;
+  z-index: 55; /* above content, below nav (60) / mobile menu (70) */
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flame-bg {
+    opacity: 0.4;
+  }
+  #flame-canvas,
+  #flame-hd {
+    display: none;
+  }
+}
+
 /* ============ TOKENS ============ */
 :root {
   /* surfaces */
