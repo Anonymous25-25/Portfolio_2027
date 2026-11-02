@@ -4,8 +4,8 @@
     "description": "Portfolio of Youness Boussedari, cybersecurity student focused on offensive security, cloud security and SOC operations.",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0a0a0b",
-    "theme_color": "#ff5c1a",
+    "background_color": "#f3f4f6",
+    "theme_color": "#f3f4f6",
     "icons": [
         {
             "src": "favicon-48.png",

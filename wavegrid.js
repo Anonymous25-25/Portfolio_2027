@@ -6,7 +6,7 @@
    cursor moves (raycast onto the grid plane), with gentle auto ripples when
    the pointer idles, plus a vignette + RGB-shift post pass.
 
-   adapted to the site identity: dark cubes, orange (#ff5c1a) crests.
+   identity: white cubes with blue (#0055ff) crests — like the original demo.
 
    layering:  #wavegrid-canvas is fixed, inset:0, z-index:-1 (behind all
               content, pointer-events none) — sketch/clicks land on the site.
@@ -19,22 +19,22 @@ import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
 import { ShaderPass } from "three/addons/postprocessing/ShaderPass.js";
 import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
 
-/* ---------------- config (site palette: dark + orange) ---------------- */
+/* ---------------- config (wave grid demo identity: white + blue) -------- */
 const CONFIG = {
   gridSize: 40,            // N x N cubes (mobile: 30)
   cubeWidth: 0.8,
   cubeHeight: 3,
   gap: 0.01,
-  colorBase: "#3a3f47",    // dark steel cube
-  colorHigh: "#ff5c1a",    // site accent on wave crests
-  bgColor: "#0a0a0b",      // matches html background token
-  waveAmplitude: 0.5,
+  colorBase: "#ffffff",    // white cubes
+  colorHigh: "#0055ff",    // demo blue on wave crests
+  bgColor: "#808080",      // clear colour (original demo), brightened by ACES exposure
+  waveAmplitude: 0.4,
   waveSpeed: 6.0,
   waveFrequency: 1.2,
   waveWidth: 3.0,
-  waveMaxHeight: 0.5,
+  waveMaxHeight: 0.4,
   waveJitter: 0.2,
-  exposure: 1.7,
+  exposure: 1.95,
 };
 
 const MAX_TRAIL = 128;
@@ -183,7 +183,7 @@ function overrideVertexShader(vertexShader) {
 
     /* scene */
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(CONFIG.bgColor);
+    scene.background = new THREE.Color(CONFIG.colorBase).multiplyScalar(0.5);
 
     /* camera (mouse-driven orbit) */
     const alphaRange = Math.PI * 0.03;
@@ -217,11 +217,11 @@ function overrideVertexShader(vertexShader) {
     positionCamera(0, 0);
     scene.add(camera);
 
-    /* lighting */
+    /* lighting (original demo values) */
     const ambientLight = new THREE.AmbientLight("#ffffff", 0.5);
     scene.add(ambientLight);
 
-    const keyLight = new THREE.DirectionalLight("#ffffff", 2.8);
+    const keyLight = new THREE.DirectionalLight("#ffffff", 4.0);
     keyLight.position.set(-20, 10, 6);
     keyLight.castShadow = true;
     keyLight.shadow.mapSize.set(1024, 1024);
@@ -235,7 +235,7 @@ function overrideVertexShader(vertexShader) {
     keyLight.shadow.bias = 0.0001;
     scene.add(keyLight);
 
-    const fillLight = new THREE.DirectionalLight("#ffffff", 0.7);
+    const fillLight = new THREE.DirectionalLight("#ffffff", 1.0);
     fillLight.position.set(10, 5, -3);
     scene.add(fillLight);
 
