@@ -26,6 +26,24 @@ const toTopBtn = document.getElementById('to-top');
 const toastZone = document.getElementById('toast-zone');
 const contactForm = document.getElementById('contact-form');
 
+/* ---------- intro loader: kinetic "Loading" for ~3s, then reveal site ---------- */
+const siteLoader = document.getElementById('site-loader');
+if (siteLoader) {
+    document.body.classList.add('is-loading');
+
+    let loaderDone = false;
+    const hideLoader = () => {
+        if (loaderDone) return;
+        loaderDone = true;
+        siteLoader.classList.add('is-done');
+        document.body.classList.remove('is-loading');
+        window.setTimeout(() => siteLoader.remove(), 450); /* let the fade finish */
+    };
+
+    /* resume scroll position hidden behind the loader, page stays pinned at top */
+    window.setTimeout(hideLoader, 3000); /* user asked: 3 seconds, then show portfolio */
+}
+
 /* ---------- year + local time (Morocco) ---------- */
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 

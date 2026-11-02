@@ -47,7 +47,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Roboto:wght@300&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
 
@@ -96,6 +96,16 @@
     </script>
 </head>
 <body>
+
+    <!-- Intro loader: kinetic "Loading" — hidden after ~3s by script.js (CSS auto-hide fallback if JS off) -->
+    <div class="site-loader" id="site-loader" role="status" aria-live="polite" aria-label="Loading portfolio">
+        <div class="loader-scale">
+            <span class="loader-dot" aria-hidden="true"></span>
+            <p class="loader-text" aria-hidden="true">
+<span class="lt lt-bounce">L</span><span class="lt">o</span><span class="lt">a</span><span class="lt">d</span><span class="lt lt-stretch">ı</span><span class="lt">n</span><span class="lt">g</span>
+            </p>
+        </div>
+    </div>
 
     <!-- Flame background layers (visual only) -->
     <div class="flame-bg" id="flame-bg" aria-hidden="true"></div>
